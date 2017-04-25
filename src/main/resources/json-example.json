@@ -1,0 +1,19 @@
+{
+  "name": "Animal",
+  "children": [
+    {
+      "name": "Vertebrates",
+      "children": [
+        {
+          "name": "Mammals"
+        },
+        {
+          "name": "Birds"
+        }
+      ]
+    },
+    {
+      "name": "Invertebrates"
+    }
+  ]
+}

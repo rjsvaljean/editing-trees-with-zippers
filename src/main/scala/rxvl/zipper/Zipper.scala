@@ -1,5 +1,8 @@
 package rxvl.zipper
 
+import argonaut.{EncodeJson, Json}
+import argonaut.Argonaut.ToJsonIdentity
+
 sealed trait Path[+A]
 case object Top extends Path[Nothing]
 case class Node[+A](
@@ -87,4 +90,25 @@ case class Location[+A](subtree: Tree[A], path: Path[A]) {
   }
 
   override def toString = "At:\n" + subtree.toString
+}
+
+object Location {
+  import Tree.{toJson => treeToJson}
+  private def rec(path: Path[String]): Json = path match {
+    case Top => "TOP".asJson
+    case Node(left, _path, right) =>
+      Json(
+        "left" -> left.map(treeToJson).asJson,
+        "right" -> right.map(treeToJson).asJson,
+        "right" -> rec(_path)
+      )
+  }
+
+  implicit val encode: EncodeJson[Location[String]] = EncodeJson(l => Json(
+    "subtree" -> treeToJson(l.subtree),
+    "path" -> rec(l.path)
+  ))
+
+  def toJson(loc: Location[String]): Json =
+    loc.asJson
 }

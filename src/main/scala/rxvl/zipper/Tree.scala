@@ -1,6 +1,8 @@
 package rxvl.zipper
 
 import fastparse.all._
+import argonaut.{CodecJson, Json}
+import argonaut.Argonaut.ToJsonIdentity
 
 sealed trait Tree[+A] {
   def fold[B](l: A => B, n: List[B] => B): B =
@@ -9,7 +11,7 @@ sealed trait Tree[+A] {
       case Section(children) => n(children.map(i => i.fold(l, n)))
     }
 
-  def rootLoc = Location(this, Top)
+  def rootLoc: Location[A] = Location(this, Top)
 
   override def toString: String = "\n" + Tree.show(this)
 }
@@ -27,6 +29,22 @@ object Tree {
         children => children.flatMap(i => "`-- " :: i.map("|   " + _))
       )
     lines(t).mkString("\n")
+  }
+
+  private case class JSONTree(name: String, children: Seq[JSONTree])
+  implicit private val treeCodec: CodecJson[JSONTree] = {
+    def rec(a: JSONTree): Json = Json("name" -> a.name.asJson, "children" -> a.children.map(rec).asJson)
+    CodecJson(rec, (decoder) => ???)
+  }
+  def toJson(t: Tree[Any]): Json = {
+    t.fold[JSONTree](
+      {
+        case "*" => JSONTree("X", Nil)
+        case "/" => JSONTree("÷", Nil)
+        case a => JSONTree(a.toString, Nil)
+      },
+      bs => JSONTree("", bs)
+    ).asJson
   }
 
   def parse(str: String): Tree[String] = {

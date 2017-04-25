@@ -1,12 +1,36 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Editing trees with zippers</title>
-  </head>
-  <body>
-    <script type="text/javascript" src="./target/scala-2.11/editing-trees-with-zippers-jsdeps.js"></script>
-    <script type="text/javascript" src="./target/scala-2.11/editing-trees-with-zippers-fastopt.js"></script>
-  </body>
-</html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
 
+  <title>Trees</title>
+
+  <style>
+
+	.node circle {
+	  fill: #fff;
+	  stroke: steelblue;
+	  stroke-width: 3px;
+	}
+
+	.node text { font: 15px sans-serif; }
+
+	.link {
+	  fill: none;
+	  stroke: #ccc;
+	  stroke-width: 2px;
+	}
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- load the d3.js library -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="tree-data.js"></script>
+<script src="draw-tree.js"></script>
+
+</body>
+</html>
