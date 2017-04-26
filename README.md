@@ -1,5 +1,5 @@
 # editing-trees-with-zippers
-Implementation of the Huet paper on Zippers and other stuff for https://www.meetup.com/ny-scala/events/239188121/
+Implementation of the [Huet paper on The Zipper](http://gallium.inria.fr/~huet/PUBLIC/zip.pdf) and other stuff for https://www.meetup.com/ny-scala/events/239188121/
 
 # Index
 
