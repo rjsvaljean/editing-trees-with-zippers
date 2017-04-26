@@ -9,3 +9,8 @@ Implementation of the Huet paper on Zippers and other stuff for https://www.meet
 - [Memoizing traversal](https://github.com/rjsvaljean/editing-trees-with-zippers/blob/master/src/main/scala/rxvl/zipper/memo/MemoTree.scala)
 - [Binary Tree Zipper from the Huet paper](https://github.com/rjsvaljean/editing-trees-with-zippers/blob/master/src/main/scala/rxvl/zipper/firstOrderTerm/BinaryTree.scala)
 - [Binary Tree Zipper from the McBride Paper](https://github.com/rjsvaljean/editing-trees-with-zippers/blob/master/src/main/scala/rxvl/zipper/generalize/BTreeZipper.scala)
+
+# Running
+
+Want to draw a tree for some reason: `sbt 'run 1+2+3+5'`
+`sbt test` just runs (ZipperSpec)[https://github.com/rjsvaljean/editing-trees-with-zippers/blob/master/src/test/scala/rxvl/zipper/ZipperSpec.scala]
