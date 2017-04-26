@@ -12,5 +12,5 @@ Implementation of the Huet paper on Zippers and other stuff for https://www.meet
 
 # Running
 
-Want to draw a tree for some reason: `sbt 'run 1+2+3+5'`
-`sbt test` just runs (ZipperSpec)[https://github.com/rjsvaljean/editing-trees-with-zippers/blob/master/src/test/scala/rxvl/zipper/ZipperSpec.scala]
+- Want to draw a tree for some reason: `sbt 'run 1+2+3+5'`
+- `sbt test` just runs (ZipperSpec)[https://github.com/rjsvaljean/editing-trees-with-zippers/blob/master/src/test/scala/rxvl/zipper/ZipperSpec.scala]
