@@ -15,3 +15,5 @@ libraryDependencies ++= Seq(
 )
 
 //scalaJSUseMainModuleInitializer := true
+
+initialCommands := "import rxvl.zipper._"
